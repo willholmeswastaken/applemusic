@@ -1,3 +1,4 @@
+import { Sidebar } from '@/components/sidebar'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -16,7 +17,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="bg-background">
+          <div className="grid lg:grid-cols-5 h-screen">
+            <Sidebar />
+            <div className="col-span-3 lg:col-span-4 lg:border-l">
+              <div className="flex flex-col">
+                <div className='pb-12 hidden lg:block'>
+                  Topbar
+                </div>
+                <div className="flex-1 px-6 pt-4">
+                  {children}
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </body>
     </html>
   )
 }
